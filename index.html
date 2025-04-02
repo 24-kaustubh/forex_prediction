@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Price Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        input, button { font-size: 18px; padding: 10px; margin: 10px; }
+        table { margin: auto; border-collapse: collapse; width: 50%; }
+        th, td { border: 1px solid black; padding: 10px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>Currency Price Prediction</h1>
+    <form method="POST">
+        <label for="currency">Enter Currency Pair (e.g., USDINR=X, EURUSD=X):</label><br>
+        <input type="text" id="currency" name="currency" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if predictions %}
+        <h2>Predictions for {{ currency_pair }}</h2>
+        <table>
+            <tr><th>Day</th><th>Predicted Price</th></tr>
+            {% for i in range(5) %}
+                <tr><td>Day {{ i+1 }}</td><td>{{ predictions[i] }}</td></tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
